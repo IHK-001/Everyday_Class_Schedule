@@ -4,7 +4,7 @@ import json
 import requests
 
 
-class NHKY_SYLLABUS_API:
+class SYLLABUS_API:
     def __init__(self, url, username, password):  # 初始化教务系统平台,账号和密码
         self.url_login = str(url) + '/jsxsd/xk/LoginToXk'
         self.url_syllabus = str(url) + '/jsxsd/xskb/xskb_list.do'
@@ -133,7 +133,7 @@ password = '********' # 密码
 time = '2022-2023-2'  # 规则为 学年开始-学年结束-学期数
 
 # demo
-nhky = NHKY_SYLLABUS_API(url, username, password)  # 教务平台用户名与密码
+nhky = SYLLABUS_API(url, username, password)  # 教务平台用户名与密码
 logon_session = nhky.get_logon_session()  # 获取登入session
 syllabus = nhky.get_syllabus(logon_session=logon_session, time=time)  # 获取总课表
 nhky.get_courses_info(syllabus)  # 保存课程信息到本地(方便教务网打不开也能获取课表信息)
